@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emkir <emkir@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*   By: emrul <emrul@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:35:51 by emkir             #+#    #+#             */
-/*   Updated: 2025/09/10 13:22:34 by emkir            ###   ########.fr       */
+/*   Updated: 2025/09/10 22:32:56 by emrul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static int	update_stash(int fd, char **stash)
 	stash_updated = ft_strjoin(*stash, buffer);
 	free(buffer);
 	if (!stash_updated)
+	{
 		return (-1);
+	}
 	free(*stash);
 	*stash = stash_updated;
 	return (bytes);
@@ -48,7 +50,7 @@ char	*get_next_line(int fd)
 	bytes = 1;
 	while (!ft_strchr(stash, '\n') && bytes > 0)
 		bytes = update_stash(fd, &stash);
-	if (bytes == -1 || !stash || *stash == '\0')
+	if (bytes == -1)
 	{
 		free(stash);
 		stash = NULL;

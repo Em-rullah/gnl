@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emkir <emkir@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*   By: emrul <emrul@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 12:19:03 by emkir             #+#    #+#             */
-/*   Updated: 2025/09/10 11:27:13 by emkir            ###   ########.fr       */
+/*   Updated: 2025/09/10 22:31:14 by emrul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,12 @@ char	*ft_cut(char **stash)
 	char	*rest;
 	int		len;
 
-	if (!*stash)
+	if (!*stash || **stash == '\0')
+	{
+		free(*stash);
+		*stash = NULL;
 		return (NULL);
+	}
 	if (ft_strchr(*stash, '\n'))
 	{
 		len = (ft_strchr(*stash, '\n') - *stash + 1);
