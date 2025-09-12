@@ -6,7 +6,7 @@
 /*   By: emrul <emrul@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 12:19:03 by emkir             #+#    #+#             */
-/*   Updated: 2025/09/10 22:31:14 by emrul            ###   ########.fr       */
+/*   Updated: 2025/09/12 12:29:34 by emrul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ static char	*ft_substr(char *s, int start, int len)
 		return (NULL);
 	if (start >= ft_strlen(s))
 	{
-		result = malloc(1);
-		if (!result)
-			return (NULL);
-		result[i] = '\0';
+		result = NULL;
 		return (result);
 	}
 	result = malloc(len + 1);
